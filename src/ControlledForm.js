@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
-import './App.css';
-import { observer } from 'mobx-react';
-import aliasStore from './AliasStore';
+import React, { Component } from "react";
+import "./App.css";
+
+import { connect } from "react-redux";
+import * as actionCreatores from "./store/actions/index";
 
 class ControlledForm extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       alias: "",
       description: "",
       email: ""
-    }
+    };
   }
 
   textChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   submission(e) {
     e.preventDefault();
-    aliasStore.submitToBackend(this.state);
+    this.props.onSubmitForm(this.state);
   }
 
   render() {
@@ -36,7 +37,6 @@ class ControlledForm extends Component {
             onChange={this.textChange.bind(this)}
           />
         </div>
-
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text">Description</span>
@@ -48,7 +48,6 @@ class ControlledForm extends Component {
             onChange={this.textChange.bind(this)}
           />
         </div>
-
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text">E-Mail*</span>
@@ -60,10 +59,25 @@ class ControlledForm extends Component {
             onChange={this.textChange.bind(this)}
           />
         </div>
-        <input type="submit" />
+        <input type="submit" /> <br />
+        {this.props.statusMessage}
       </form>
     );
   }
 }
 
-export default observer(ControlledForm);
+const mapStateToProps = state => {
+  return {
+    statusMessage: state.statusMessage
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onSubmitForm: form => dispatch(actionCreatores.postForm(form))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ControlledForm);
