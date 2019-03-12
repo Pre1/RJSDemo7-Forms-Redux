@@ -4,16 +4,21 @@ const initialState = {
   people: []
 };
 
-const postReducer = (state = initialState, action) => {
+const peopleReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PEOPLE:
       return {
         ...state,
         people: action.payload
       };
+    case actionTypes.SUBMIT_PERSON:
+      return {
+        ...state,
+        people: [action.payload, ...state.people]
+      };
     default:
       return state;
   }
 };
 
-export default postReducer;
+export default peopleReducer;

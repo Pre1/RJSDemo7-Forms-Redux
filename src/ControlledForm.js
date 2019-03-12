@@ -14,8 +14,10 @@ class ControlledForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.submitPerson(this.state);
+    this.props.submitPerson(this.state, this.resetForm);
   };
+
+  resetForm = () => this.setState({ alias: "", description: "", email: "" });
 
   render() {
     return (
@@ -28,17 +30,19 @@ class ControlledForm extends Component {
             type="text"
             className="form-control"
             name="alias"
+            value={this.state.alias}
             onChange={this.handleChange}
           />
         </div>
         <div className="input-group mb-3">
           <div className="input-group-prepend">
-            <span className="input-group-text">Description</span>
+            <span className="input-group-text">Description*</span>
           </div>
           <input
             type="text"
             className="form-control"
             name="description"
+            value={this.state.description}
             onChange={this.handleChange}
           />
         </div>
@@ -50,6 +54,7 @@ class ControlledForm extends Component {
             type="email"
             className="form-control"
             name="email"
+            value={this.state.email}
             onChange={this.handleChange}
           />
         </div>
@@ -64,7 +69,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    submitPerson: data => dispatch(actionCreators.submitPerson(data))
+    submitPerson: (data, reset) =>
+      dispatch(actionCreators.submitPerson(data, reset))
   };
 };
 
