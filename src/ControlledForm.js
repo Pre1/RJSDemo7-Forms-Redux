@@ -1,29 +1,19 @@
 import React, { Component } from "react";
-import "./App.css";
 
 import { connect } from "react-redux";
 import * as actionCreatores from "./store/actions/index";
 
 class ControlledForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  }
-
   render() {
-    return (
-    );
+    return <div />;
   }
 }
 
 const mapStateToProps = state => {
-  return {
-  };
+  return {};
 };
 const mapDispatchToProps = dispatch => {
-  return {
-  };
+  return {};
 };
 
 export default connect(
