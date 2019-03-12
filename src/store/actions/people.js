@@ -18,4 +18,16 @@ export const fetchPeople = () => {
   };
 };
 
-export const submitPerson = data => {};
+export const submitPerson = data => {
+  return async dispatch => {
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/alias/", data);
+      dispatch({
+        type: actionTypes.SUBMIT_PERSON
+      });
+    } catch (error) {
+      console.error("Person did not submit!");
+      console.error(error);
+    }
+  };
+};
