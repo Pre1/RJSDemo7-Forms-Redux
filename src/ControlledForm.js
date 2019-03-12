@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import * as actionCreatores from "./store/actions/index";
+import * as actionCreators from "./store/actions";
 
 class ControlledForm extends Component {
   render() {
