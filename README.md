@@ -142,12 +142,13 @@ export default postReducer;
 In `ControlledForm.js`
 
 ```javascript
+...
+    {this.props.statusMessage}
+...
 const mapStateToProps = state => {
     return {
         statusMessage: state.statusMessage
     };
 };
-
 ...
-{this.props.statusMessage}
 ```
