@@ -1,1 +1,1 @@
-export { postForm } from "./post";
+export { submitForm } from "./post";
