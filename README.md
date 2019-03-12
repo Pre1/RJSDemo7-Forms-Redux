@@ -2,7 +2,7 @@
 
 [Slides](https://docs.google.com/presentation/d/1VNDFN2oIkKLUpKRZ7hkiRjyJTv3d7-Lp6eZJPZn2P5E/edit?usp=sharing)
 
-1. Clone and backend and run the server
+1. Clone and [backend](https://github.com/lailalelouch/RJS) and run the server
 2. Add the form in `ControlledForm.js`
 ```javascript
     render() {
