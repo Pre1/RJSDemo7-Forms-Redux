@@ -1,1 +1,2 @@
-export const POST_FORM = "POST_FORM";
+export const FETCH_PEOPLE = "FETCH_PEOPLE";
+export const SUBMIT_PERSON = "SUBMIT_PERSON";

@@ -1,1 +1,1 @@
-export { submitForm } from "./post";
+export { submitPerson, fetchPeople } from "./people";
