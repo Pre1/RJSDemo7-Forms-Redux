@@ -27,10 +27,17 @@ export const submitPerson = (data, reset) => {
         type: actionTypes.SUBMIT_PERSON,
         payload: person
       });
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: {}
+      });
       reset();
     } catch (error) {
       console.error("Person did not submit!");
-      console.error(error);
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: error.response.data
+      });
     }
   };
 };

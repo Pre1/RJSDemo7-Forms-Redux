@@ -9,9 +9,11 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import peopleReducer from "./store/reducers/people";
+import errorReducer from "./store/reducers/errors";
 
 const rootReducer = combineReducers({
-  rootPeople: peopleReducer
+  rootPeople: peopleReducer,
+  errors: errorReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
